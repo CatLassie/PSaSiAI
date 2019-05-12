@@ -1,6 +1,14 @@
-string: name;
+%string: name;
+
+% cardinality constants
 int: nrWeeks;
 int: nrDays;
 int: slotsPerDay;
 
-output(["\(name): nrDays=\(nrDays)"])
+% soft constraint weight constants
+int: time;
+int: room;
+int: distribution;
+int: student;
+
+output(["nrDays=\(nrDays)"])

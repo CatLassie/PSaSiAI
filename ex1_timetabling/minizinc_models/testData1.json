@@ -1,0 +1,9 @@
+{
+  "nrWeeks" : 13,
+  "nrDays" : 7,
+  "slotsPerDay" : 288,
+  "time" : 2,
+  "room" : 1,
+  "distribution" : 1,
+  "student" : 2
+} 
