@@ -1,1 +1,6 @@
-% nothing to see here yet, go away!
+string: name;
+int: nrWeeks;
+int: nrDays;
+int: slotsPerDay;
+
+output(["\(name): nrDays=\(nrDays)"])

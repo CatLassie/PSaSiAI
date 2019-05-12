@@ -1,0 +1,4 @@
+name = "testData1";
+nrWeeks = 13;
+nrDays = 7;
+slotsPerDay = 288;
