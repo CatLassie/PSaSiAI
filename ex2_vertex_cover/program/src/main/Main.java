@@ -1,31 +1,30 @@
-package util;
+package main;
 
 import java.io.FileNotFoundException;
 
+import construction.IConstruction;
+import construction.Randomized;
 import models.Solution;
 import parser.KPMPInstance;
 
-public class Tester {
+public class Main {
 
-	public static void main(String[] args) {
-		
-		/*
-		Solution initialSolution = new Solution(8, null);
-		
-		System.out.println(initialSolution);
-		
+	public static void main(String[] args) {	
 		String instanceN = "01";
 		String readPath = "D:/uni/2019SS/PSaSiAI/PSaSiAIrepo/ex2_vertex_cover/heuropttechinstances/instance-"+instanceN+".txt";
 		
 		try {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
-			System.out.println(k.getNumVertices());
+			//System.out.println(k.getNumVertices());
+			
+			IConstruction constr = new Randomized();
+			Solution initialSolution = constr.generateSolution(k);
+			
+			System.out.println(initialSolution);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
-		
 	}
 
 }

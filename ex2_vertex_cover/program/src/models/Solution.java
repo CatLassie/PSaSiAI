@@ -5,19 +5,18 @@ import java.util.List;
 
 public class Solution {
 	private List<Boolean> vertexCover;
-	private int vertexNum;
-	private int edgeNum;
+	private int vertexN;
+	private int edgeN = 0;
 	// private int[][] adjacencyMatrix;
 	private List<List<Integer>> adjacencyList;
 	private int cost;
 	
-	public Solution(int vertexNum, int edgeNum, List<List<Integer>> adjacencyList) {
-		this.vertexNum = vertexNum;
-		this.edgeNum = edgeNum;
+	public Solution(int vertexN, List<List<Integer>> adjacencyList) {
+		this.vertexN = vertexN;
 		this.adjacencyList = adjacencyList;
 		
 		vertexCover = new ArrayList<Boolean>();
-		for(int i = 0; i < vertexNum; i++) {
+		for(int i = 0; i < vertexN; i++) {
 			vertexCover.add(false);
 		}
 		
@@ -63,14 +62,18 @@ public class Solution {
 		return vertexCover;
 	}
 
-	public int getVertexNum() {
-		return vertexNum;
+	public int getVertexN() {
+		return vertexN;
 	}
-
-	public int getEdgeNum() {
-		return edgeNum;
+	
+	public int getEdgeN() {
+		return edgeN;
 	}
-
+	
+	public void setEdgeN(int edgeN) {
+		this.edgeN = edgeN;
+	}
+	
 	public List<List<Integer>> getAdjacencyList() {
 		return adjacencyList;
 	}
@@ -82,17 +85,23 @@ public class Solution {
 	public String toString() {
 		// pickVertex(7);
 		// pickVertex(5);
-		String vCover = "vertex cover is:\n[";
+		String solution = "vertex cover is: [";
 		for (int i = 0; i < vertexCover.size(); i++) {
 			if(vertexCover.get(i) == true) {
-				vCover += i == vertexCover.size() - 1 ? i :  i + ", ";
+				solution += i == vertexCover.size() - 1 ? i :  i + ", ";
 			}
 		}
-		vCover += "]\n";
-		vCover += "cost is: " + cost + "\n";
-		vCover += "vertex number is: " + vertexNum + "\n";
-		vCover += "edge number is: " + edgeNum + "\n";
-		return vCover;
+		solution += "]\n\n";
+		solution += "cost is: " + cost + "\n\n";
+		solution += "vertex number is: " + vertexN + "\n\n";
+		solution += "edge number is: " + edgeN + "\n\n";
+		
+		solution += "adjacency list is:\n";
+		for (int i = 0; i < adjacencyList.size(); i++) {
+			solution += i +": ";
+			solution += adjacencyList.get(i) +"\n";
+		}
+		return solution;
 	}
 
 }
