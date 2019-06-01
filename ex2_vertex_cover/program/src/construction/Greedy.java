@@ -1,6 +1,5 @@
 package construction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import models.Solution;
@@ -14,33 +13,35 @@ public class Greedy implements IConstruction {
 		List<List<Integer>> adjacencyList = kpmpInstance.getAdjacencyList();
 
 		Solution solution = new Solution(vertexNumber, adjacencyList);
-		int edgeNumber = 0;
-		/*
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = i + 1; j < matrix[i].length; j++) {
-
-				boolean currentEdge = matrix[i][j];
-				if (currentEdge) {
-					edgeNumber++;
-					// greedily decide to which page to add the edge
-					List<Integer> crossingIncrease = solution.calculateCrossingIncreaseArray(i, j);
-
-					int minCrossingIncrease = -1;
-					int bestPage = -1;
-					List<Integer> copyCrossingIncrease = new ArrayList<>(crossingIncrease);
-					copyCrossingIncrease.sort((a, b) -> a - b);
-					minCrossingIncrease = copyCrossingIncrease.get(0);
-					bestPage = crossingIncrease.indexOf(minCrossingIncrease);
+		
+		while(!solution.isValid()) {
+			// best vertex and number of edges it would cover
+			int promisingVertex = -1;
+			int maxCoveredEdgeN = -1;
+			
+			for(int i = 0; i < vertexNumber; i++) {
+				if(solution.getVertexCover().get(i) == false) { // check only not yet assigned vertices
+					List<Integer> currentVertexList = solution.getAdjacencyList().get(i);
+					int coveredEdgeN = 0;
 					
-					solution.addEdge(i, j, bestPage);
-					solution.addNewCrossings(minCrossingIncrease, bestPage);
-					// System.out.println(minCrossingIncrease);
+					// sum up all edges covered by potential candidate vertex
+					for(int j = 0; j < currentVertexList.size(); j++) {
+						if(solution.getVertexCover().get(j) == false) { // only none-assigned edges count
+							coveredEdgeN++;
+						}
+					}
+					
+					// if its covered edge number is highest (so far) - make it the promising vertex
+					if(coveredEdgeN > maxCoveredEdgeN) {
+						promisingVertex = i;
+						maxCoveredEdgeN = coveredEdgeN;
+						// System.out.println(coveredEdgeN);
+					}
 				}
-
 			}
+			
+			solution.pickVertex(promisingVertex);
 		}
-		*/
-		solution.setEdgeN(edgeNumber);
 		return solution;
 	}
 	

@@ -6,7 +6,7 @@ import java.util.List;
 public class Solution {
 	private List<Boolean> vertexCover;
 	private int vertexN;
-	private int edgeN = 0;
+	// private int edgeN = 0;
 	// private int[][] adjacencyMatrix;
 	private List<List<Integer>> adjacencyList;
 	private int cost;
@@ -44,11 +44,20 @@ public class Solution {
 
 		return isValid;
 	}
-	
-	// TODO:
-	// check if solution is a valid vertex cover
-	public boolean isValid() {
-		return false;
+
+	// check if solution is a valid vertex cover (COSTLY OPERATION, USE WISELY)
+	public boolean isValid() {		
+		for(int i = 0; i < adjacencyList.size(); i++) {
+			if(vertexCover.get(i) == false) {
+				List<Integer> innerList = adjacencyList.get(i);
+				for(int j = 0; j < innerList.size(); j++) {
+					if(vertexCover.get(innerList.get(j)) == false) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
 	}
 	
 	public int pickVertex(int vertex) {
@@ -65,7 +74,7 @@ public class Solution {
 	public int getVertexN() {
 		return vertexN;
 	}
-	
+	/*
 	public int getEdgeN() {
 		return edgeN;
 	}
@@ -73,7 +82,7 @@ public class Solution {
 	public void setEdgeN(int edgeN) {
 		this.edgeN = edgeN;
 	}
-	
+	*/
 	public List<List<Integer>> getAdjacencyList() {
 		return adjacencyList;
 	}
@@ -85,22 +94,25 @@ public class Solution {
 	public String toString() {
 		// pickVertex(7);
 		// pickVertex(5);
-		String solution = "vertex cover is: [";
-		for (int i = 0; i < vertexCover.size(); i++) {
-			if(vertexCover.get(i) == true) {
-				solution += i == vertexCover.size() - 1 ? i :  i + ", ";
-			}
-		}
-		solution += "]\n\n";
-		solution += "cost is: " + cost + "\n\n";
-		solution += "vertex number is: " + vertexN + "\n\n";
-		solution += "edge number is: " + edgeN + "\n\n";
+		String solution = "vertex number is: " + vertexN + "\n";
+		// solution += "edge number is: " + edgeN + "\n\n";
 		
 		solution += "adjacency list is:\n";
 		for (int i = 0; i < adjacencyList.size(); i++) {
 			solution += i +": ";
 			solution += adjacencyList.get(i) +"\n";
 		}
+		
+		solution += "\nvertex cover is: [";
+		for (int i = 0; i < vertexCover.size(); i++) {
+			if(vertexCover.get(i) == true) {
+				solution += i == vertexCover.size() - 1 ? i :  i + ", ";
+			}
+		}
+		solution += "]\n";
+		solution += "cost is: " + cost + "\n";
+		solution += "solution is: " + (isValid() ? "VALID" : "INVALID") + "\n";
+		
 		return solution;
 	}
 

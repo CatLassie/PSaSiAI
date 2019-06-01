@@ -1,12 +1,11 @@
 package construction;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import models.Solution;
 import parser.KPMPInstance;
 
-public class Randomized implements IConstruction {
+public class Worst implements IConstruction {
 	
 	public Solution generateSolution(KPMPInstance kpmpInstance) {
 		int vertexNumber = kpmpInstance.getNumVertices();
@@ -14,18 +13,15 @@ public class Randomized implements IConstruction {
 		List<List<Integer>> adjacencyList = kpmpInstance.getAdjacencyList();
 		
 		Solution solution = new Solution(vertexNumber, adjacencyList);
-		
-		while(!solution.isValid()) {
-			int randomVertex = ThreadLocalRandom.current().nextInt(0, vertexNumber);
-			if(solution.getVertexCover().get(randomVertex) == false) {
-				solution.pickVertex(randomVertex);
-			}
+				
+		for(int i = 0; i < vertexNumber; i++) {
+			solution.pickVertex(i);
 		}
 		return solution;
 	}
 	
 	public String toString(){
-		return "Randomized construction heuristic";
+		return "Worst construction heuristic (take all vertices)";
 	}
 
 }

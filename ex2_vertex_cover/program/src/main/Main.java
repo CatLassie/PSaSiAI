@@ -3,7 +3,9 @@ package main;
 import java.io.FileNotFoundException;
 
 import construction.IConstruction;
+import construction.Worst;
 import construction.Randomized;
+import construction.Greedy;
 import models.Solution;
 import parser.KPMPInstance;
 
@@ -17,7 +19,7 @@ public class Main {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
 			//System.out.println(k.getNumVertices());
 			
-			IConstruction constr = new Randomized();
+			IConstruction constr = new Randomized(); // Worst / Randomized / Greedy
 			Solution initialSolution = constr.generateSolution(k);
 			
 			System.out.println(initialSolution);
