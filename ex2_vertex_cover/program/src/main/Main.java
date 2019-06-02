@@ -1,6 +1,7 @@
 package main;
 
 import java.io.FileNotFoundException;
+import java.lang.management.ManagementFactory;
 
 import SimulatedAnnealing.SimulatedAnnealing;
 import construction.IConstruction;
@@ -31,17 +32,25 @@ public class Main {
 		try {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
 						
-			IConstruction constr = constrType.equals("random") ? new Randomized()
+			IConstruction construction = constrType.equals("random") ? new Randomized()
 					: (constrType.equals("greedy") ? new Greedy() : new Worst());
 
 			NeighbourhoodStructureEnum neighbourhoodEnumType = neighbourhoodType.equals("strict")
 					? NeighbourhoodStructureEnum.STRICT : NeighbourhoodStructureEnum.RELAXED;
 			
-			Solution initialSolution = constr.generateSolution(k);
+			double constructionStartCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
+			Solution initialSolution = construction.generateSolution(k);
+			double constructionEndCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
+			double constructionDiffCPU = (constructionStartCPU - constructionEndCPU)/1000000000;
+			System.out.println("Construction Heuristic CPU time: "+constructionDiffCPU+"\n");
 			
 			SimulatedAnnealing simulatedAnnealing = new SimulatedAnnealing(initialSolution, neighbourhoodEnumType);
-			System.out.println("Neighbourhood type is set to: " + simulatedAnnealing.getNeighbourhoodType() + "\n");
+			// System.out.println("Neighbourhood type is set to: " + simulatedAnnealing.getNeighbourhoodType() + "\n");
+			double annealingStartCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
 			Solution bestSolution = simulatedAnnealing.search();
+			double annealingEndCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
+			double annealingDiffCPU = (annealingStartCPU - annealingEndCPU)/1000000000;
+			System.out.println("Simulated Annealing CPU time: "+annealingDiffCPU+"\n");
 			
 			System.out.println(bestSolution);
 		} catch (FileNotFoundException e) {
