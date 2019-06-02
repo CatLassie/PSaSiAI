@@ -91,6 +91,11 @@ public class Solution {
 		return cost;
 	}
 	
+	// TODO: dont forget to implement this!
+	public Solution copy() {
+		return null;
+	}
+	
 	public String toString() {
 		// pickVertex(7);
 		// pickVertex(5);
