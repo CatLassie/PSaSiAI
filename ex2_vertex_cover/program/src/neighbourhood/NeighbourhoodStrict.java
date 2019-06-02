@@ -33,6 +33,13 @@ public class NeighbourhoodStrict implements INeighbourhood {
 
 		return solutionNew;
 		*/
+		
+		int randomVertex;
+		do {
+			randomVertex = ThreadLocalRandom.current().nextInt(0, solution.getVertexN());
+		} while(!solution.isMoveValid(randomVertex));
+
+		solution.pickVertex(randomVertex);
 		return solution;
 	}
 }

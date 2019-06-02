@@ -54,6 +54,13 @@ public class SimulatedAnnealing {
 			}
 		}
 		*/
+		
+		for(int i = 0; i < 10; i++) {
+			currentSolution = neighbourhood.move(currentSolution);
+			// System.out.println("intermediate i: " + currentSolution.getVertexCover());
+		}
+		System.out.println("\n");
+		
 		return currentSolution;
 	}
 	
