@@ -22,6 +22,8 @@ public class Solution {
 		
 		cost = 0;
 	}
+		
+	public Solution() {}
 	
 	public boolean isMoveValid(int vertex) {
 		boolean isValid = true;
@@ -70,9 +72,17 @@ public class Solution {
 	public List<Boolean> getVertexCover() {
 		return vertexCover;
 	}
+	
+	public void setVertexCover(List<Boolean> vertexCover) {
+		this.vertexCover = vertexCover;
+	}
 
 	public int getVertexN() {
 		return vertexN;
+	}
+	
+	public void setVertexN(int vertexN) {
+		this.vertexN = vertexN;
 	}
 	/*
 	public int getEdgeN() {
@@ -86,14 +96,26 @@ public class Solution {
 	public List<List<Integer>> getAdjacencyList() {
 		return adjacencyList;
 	}
+	
+	public void setAdjacencyList(List<List<Integer>> adjacencyList) {
+		this.adjacencyList = adjacencyList;
+	}
 
 	public int getCost() {
 		return cost;
 	}
 	
-	// TODO: dont forget to implement this!
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+	
 	public Solution copy() {
-		return null;
+		Solution copy = new Solution();
+		copy.setVertexN(vertexN);
+		copy.setAdjacencyList(adjacencyList);
+		copy.setVertexCover(new ArrayList<Boolean>(vertexCover));
+		copy.setCost(cost);
+		return copy;
 	}
 	
 	public String toString() {
