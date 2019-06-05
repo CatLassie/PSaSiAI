@@ -21,7 +21,7 @@ public class Worst implements IConstruction {
 	}
 	
 	public String toString(){
-		return "Worst construction heuristic (take all vertices)";
+		return "WORST (take all vertices)";
 	}
 
 }

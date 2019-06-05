@@ -11,10 +11,18 @@ public class SimulatedAnnealing {
 
 	private Solution currentSolution;
 	private INeighbourhood neighbourhood;
-	// private double temperature;
+	private double temperature; // // f-max - f-min (which is the vertex number)
+	private double coolingRate; // temperature cooling rate (e.g. 0.95)
+	private int equilibriumCondition; // number of moves before temperature adjustment (multiple of vertex number, e.g. n(n-1))
+	private int stoppingCondition; // number of temperature levels without solution improvement (e.g. 5)
 
-	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType) {
+	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType,
+							   double coolingRate, int equilibriumCoefficient, int stoppingCondition) {
 		this.currentSolution = solution;
+		this.temperature = solution.getVertexN();
+		this.coolingRate = coolingRate;
+		this.equilibriumCondition = equilibriumCoefficient * solution.getVertexN();
+		this.stoppingCondition = stoppingCondition;
 
 		if (neighbourhoodType == NeighbourhoodStructureEnum.STRICT) {
 			this.neighbourhood = new NeighbourhoodStrict();
@@ -71,5 +79,14 @@ public class SimulatedAnnealing {
 
 	public NeighbourhoodStructureEnum getNeighbourhoodType() {
 		return neighbourhood.getNeighbourhoodType();
+	}
+	
+	public String toString() {
+		String annealing = "neighbourhood type: " + neighbourhood.getNeighbourhoodType() + "\n";
+		annealing += "initial temperature: " + temperature + "\n";
+		annealing += "cooling rate: " + coolingRate + "\n";
+		annealing += "equilibrium condition: " + equilibriumCondition + " iterations\n";
+		annealing += "stopping condition: " + stoppingCondition + " temperature levels without solution improvement";
+		return annealing;
 	}
 }

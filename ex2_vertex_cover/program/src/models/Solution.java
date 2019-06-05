@@ -121,24 +121,24 @@ public class Solution {
 	public String toString() {
 		// pickVertex(7);
 		// pickVertex(5);
-		String solution = "vertex number is: " + vertexN + "\n";
+		String solution = "vertex number: " + vertexN + "\n";
 		// solution += "edge number is: " + edgeN + "\n\n";
 		
-		solution += "adjacency list is:\n";
+		solution += "adjacency list:\n";
 		for (int i = 0; i < adjacencyList.size(); i++) {
 			solution += i +": ";
 			solution += adjacencyList.get(i) +"\n";
 		}
 		
-		solution += "\nvertex cover is: [";
+		solution += "\nvertex cover: [";
 		for (int i = 0; i < vertexCover.size(); i++) {
 			if(vertexCover.get(i) == true) {
 				solution += i == vertexCover.size() - 1 ? i :  i + ", ";
 			}
 		}
 		solution += "]\n";
-		solution += "cost is: " + cost + "\n";
-		solution += "solution is: " + (isValid() ? "VALID" : "INVALID") + "\n";
+		solution += "cost: " + cost + "\n";
+		solution += "solution is " + (isValid() ? "VALID" : "INVALID") + "\n";
 		
 		return solution;
 	}

@@ -46,7 +46,7 @@ public class Greedy implements IConstruction {
 	}
 	
 	public String toString(){
-		return "Greedy construction heuristic";
+		return "GREEDY";
 	}
 
 }

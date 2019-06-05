@@ -25,7 +25,7 @@ public class Randomized implements IConstruction {
 	}
 	
 	public String toString(){
-		return "Randomized construction heuristic";
+		return "RANDOMIZED";
 	}
 
 }
