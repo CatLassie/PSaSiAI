@@ -6,6 +6,7 @@ import models.Solution;
 import util.NeighbourhoodStructureEnum;
 
 public class NeighbourhoodStrict implements INeighbourhood {
+	private NeighbourhoodStructureEnum neighbourhoodType = NeighbourhoodStructureEnum.STRICT;
 
 	// STRICT STEP FUNCTION (solution invalidating vertex picks are not considered)
 	public Solution move(Solution solution) {
@@ -41,5 +42,9 @@ public class NeighbourhoodStrict implements INeighbourhood {
 
 		solution.pickVertex(randomVertex);
 		return solution;
+	}
+	
+	public NeighbourhoodStructureEnum getNeighbourhoodType() {
+		return neighbourhoodType;
 	}
 }

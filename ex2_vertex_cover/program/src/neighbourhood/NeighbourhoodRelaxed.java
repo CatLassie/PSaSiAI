@@ -7,6 +7,7 @@ import models.Solution;
 import util.NeighbourhoodStructureEnum;
 
 public class NeighbourhoodRelaxed implements INeighbourhood {
+	private NeighbourhoodStructureEnum neighbourhoodType = NeighbourhoodStructureEnum.RELAXED;
 
 	// RELAXED STEP FUNCTION (solution invalidating vertex picks have all their adjacent vertices picked)
 	public Solution move(Solution solution) {
@@ -27,5 +28,9 @@ public class NeighbourhoodRelaxed implements INeighbourhood {
 
 		solution.pickVertex(randomVertex);
 		return solution;
+	}
+	
+	public NeighbourhoodStructureEnum getNeighbourhoodType() {
+		return neighbourhoodType;
 	}
 }

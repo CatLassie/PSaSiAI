@@ -10,13 +10,12 @@ import util.NeighbourhoodStructureEnum;
 public class SimulatedAnnealing {
 
 	private Solution currentSolution;
-	private NeighbourhoodStructureEnum neighbourhoodType;
 	private INeighbourhood neighbourhood;
+	// private double temperature;
 
 	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType) {
 		this.currentSolution = solution;
 
-		this.neighbourhoodType = neighbourhoodType;
 		if (neighbourhoodType == NeighbourhoodStructureEnum.STRICT) {
 			this.neighbourhood = new NeighbourhoodStrict();
 		}
@@ -71,6 +70,6 @@ public class SimulatedAnnealing {
 	*/
 
 	public NeighbourhoodStructureEnum getNeighbourhoodType() {
-		return neighbourhoodType;
+		return neighbourhood.getNeighbourhoodType();
 	}
 }
