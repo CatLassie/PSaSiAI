@@ -55,7 +55,7 @@ public class Main {
 			double constructionStartCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
 			Solution initialSolution = construction.generateSolution(k);
 			double constructionEndCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
-			double constructionDiffCPU = (constructionStartCPU - constructionEndCPU)/1000000000;
+			double constructionDiffCPU = (constructionEndCPU - constructionStartCPU)/1000000000;
 			System.out.println("CPU time: "+constructionDiffCPU+"\n");
 			
 			System.out.println("INITIAL CONSTRUCTED SOULTION:");
@@ -74,7 +74,7 @@ public class Main {
 			double annealingStartCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
 			Solution bestSolution = simulatedAnnealing.search();
 			double annealingEndCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
-			double annealingDiffCPU = (annealingStartCPU - annealingEndCPU)/1000000000;
+			double annealingDiffCPU = (annealingEndCPU - annealingStartCPU)/1000000000;
 			System.out.println("CPU time: "+annealingDiffCPU+"\n");
 			
 			
