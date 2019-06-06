@@ -10,24 +10,25 @@ public class NeighbourhoodRelaxed implements INeighbourhood {
 	private NeighbourhoodStructureEnum neighbourhoodType = NeighbourhoodStructureEnum.RELAXED;
 
 	// RELAXED STEP FUNCTION (solution invalidating vertex picks have all their adjacent vertices picked)
-	public Solution move(Solution solution) {
+	public Solution move(Solution currentSolution) {
 		
-		int randomVertex = ThreadLocalRandom.current().nextInt(0, solution.getVertexN());
+		Solution nextSolution = currentSolution.copy();
+		int randomVertex = ThreadLocalRandom.current().nextInt(0, nextSolution.getVertexN());
 		// System.out.println(randomVertex);
 		// System.out.println(solution.getAdjacencyList().get(randomVertex));
 		// System.out.println(solution.isMoveValid(randomVertex));
 		
-		if(!solution.isMoveValid(randomVertex)) {
-			List<Integer> adjacentToRandomVertex = solution.getAdjacencyList().get(randomVertex);
+		if(!nextSolution.isMoveValid(randomVertex)) {
+			List<Integer> adjacentToRandomVertex = nextSolution.getAdjacencyList().get(randomVertex);
 			for(int i = 0; i < adjacentToRandomVertex.size(); i++) {
-				if(!solution.getVertexCover().get(adjacentToRandomVertex.get(i))) {
-					solution.pickVertex(adjacentToRandomVertex.get(i));
+				if(!nextSolution.getVertexCover().get(adjacentToRandomVertex.get(i))) {
+					nextSolution.pickVertex(adjacentToRandomVertex.get(i));
 				}
 			}
 		}
 
-		solution.pickVertex(randomVertex);
-		return solution;
+		nextSolution.pickVertex(randomVertex);
+		return nextSolution;
 	}
 	
 	public NeighbourhoodStructureEnum getNeighbourhoodType() {

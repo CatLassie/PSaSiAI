@@ -15,6 +15,8 @@ public class SimulatedAnnealing {
 	private double coolingRate; // temperature cooling rate (e.g. 0.95)
 	private int equilibriumCondition; // number of moves before temperature adjustment (multiple of vertex number, e.g. n(n-1))
 	private int stoppingCondition; // number of temperature levels without solution improvement (e.g. 5)
+	
+	private int tempLevelsWithoutImprovement = 0;
 
 	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType,
 							   double coolingRate, int equilibriumCoefficient, int stoppingCondition) {
@@ -32,50 +34,38 @@ public class SimulatedAnnealing {
 		}
 	}
 	
-	// RANDOM EDGE
 	public Solution search() {
-		/*
-		timeout:
-		for (int i = 0; i < currentSolution.getEdgeNumber(); i++) {
-			if(Utilities.isTimeOver()){
-				System.out.println("Local Search time is up!");
-				break timeout;
+		while(tempLevelsWithoutImprovement < stoppingCondition) {
+			int oldCost = currentSolution.getCost();
+			oneTemperatureLevelSearch();
+			int newCost = currentSolution.getCost();
+			
+			if(!(oldCost < newCost)) {
+				tempLevelsWithoutImprovement++;
 			}
-			Solution solutionNew = neighbourhood.move(currentSolution);
-			int v1 = neighbourhood.getSelectedV1();
-			int v2 = neighbourhood.getSelectedV2();
-			int fromPage = currentSolution.getAdjacencyMatrix()[v1][v2];
-			int toPage = neighbourhood.getSelectedPage();
-
-			int edgeRemovalCost = currentSolution.calculateCrossingIncrease(v1, v2, fromPage);
-			if (edgeRemovalCost > 0) {
-				int edgeAdditionCost = currentSolution.calculateCrossingIncrease(v1, v2, toPage);
-				if (edgeAdditionCost < edgeRemovalCost) {
-					currentSolution = solutionNew;
-					int fromPageCrossings = currentSolution.getCrossingsList().get(fromPage);
-					int toPageCrossings = currentSolution.getCrossingsList().get(toPage);
-					currentSolution.getCrossingsList().set(fromPage, fromPageCrossings - edgeRemovalCost);
-					currentSolution.getCrossingsList().set(toPage, toPageCrossings + edgeAdditionCost);
-					// System.out.println("UPDATE! " + i);
-				}
-			}
+			
+			temperature = temperature * coolingRate; // TODO: cool it down once or for every iteration in equilibrium cycle?	
 		}
-		*/
-		
-		for(int i = 0; i < 10; i++) {
-			currentSolution = neighbourhood.move(currentSolution);
-			// System.out.println("intermediate i: " + currentSolution.getVertexCover());
-		}
-		// System.out.println("\n");
 		
 		return currentSolution;
 	}
 	
-	/*
-	public Solution getBestSolution() {
-		return currentSolution;
+	private void oneTemperatureLevelSearch() {
+		for(int i = 0; i < equilibriumCondition; i++) {
+			Solution nextSolution = neighbourhood.move(currentSolution);
+			if(nextSolution.getCost() < currentSolution.getCost()) {
+				currentSolution = nextSolution;
+			} else {
+				
+				// metrolpolis criterion and probabliliy goes here!
+				
+				if(false) {
+					currentSolution = nextSolution;
+				}
+			}
+		}
+		
 	}
-	*/
 
 	public NeighbourhoodStructureEnum getNeighbourhoodType() {
 		return neighbourhood.getNeighbourhoodType();
