@@ -119,8 +119,6 @@ public class Solution {
 	}
 	
 	public String toString() {
-		// pickVertex(7);
-		// pickVertex(5);
 		String solution = "vertex number: " + vertexN + "\n";
 		// solution += "edge number is: " + edgeN + "\n\n";
 		
@@ -143,4 +141,31 @@ public class Solution {
 		return solution;
 	}
 
+	public String graphData() {
+		String graph = "vertex number: " + vertexN + "\n";
+		// solution += "edge number is: " + edgeN + "\n\n";
+		
+		graph += "adjacency list:\n";
+		for (int i = 0; i < adjacencyList.size(); i++) {
+			graph += i +": ";
+			graph += adjacencyList.get(i) +"\n";
+		}
+		
+		return graph;
+	}
+	
+	public String result() {
+		String result = "vertex cover: [";
+		for (int i = 0; i < vertexCover.size(); i++) {
+			if(vertexCover.get(i) == true) {
+				result += i == vertexCover.size() - 1 ? i :  i + ", ";
+			}
+		}
+		result += "]\n";
+		result += "cost: " + cost + "\n";
+		result += "solution is " + (isValid() ? "VALID" : "INVALID") + "\n";
+		
+		return result;
+	}
+	
 }

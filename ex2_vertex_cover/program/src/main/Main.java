@@ -58,6 +58,9 @@ public class Main {
 			double constructionDiffCPU = (constructionStartCPU - constructionEndCPU)/1000000000;
 			System.out.println("CPU time: "+constructionDiffCPU+"\n");
 			
+			System.out.println("INITIAL CONSTRUCTED SOULTION:");
+			System.out.println(initialSolution.result()+"");
+			
 			
 			
 			NeighbourhoodStructureEnum neighbourhoodEnumType = neighbourhoodType.equals("strict")
@@ -77,7 +80,9 @@ public class Main {
 			
 			
 			System.out.println("SOLUTION:");
-			System.out.println(bestSolution);
+			// System.out.println(bestSolution.graphData()+"");
+			System.out.println(bestSolution.result()+"");
+			// System.out.println(bestSolution);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
