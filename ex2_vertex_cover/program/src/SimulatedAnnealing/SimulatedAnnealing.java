@@ -1,5 +1,7 @@
 package SimulatedAnnealing;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import models.Solution;
 import neighbourhood.INeighbourhood;
 import neighbourhood.NeighbourhoodRelaxed;
@@ -44,6 +46,7 @@ public class SimulatedAnnealing {
 				tempLevelsWithoutImprovement++;
 			}
 			
+			//System.out.println(temperature);
 			temperature = temperature * coolingRate; // TODO: cool it down once or for every iteration in equilibrium cycle?	
 		}
 		
@@ -56,10 +59,13 @@ public class SimulatedAnnealing {
 			if(nextSolution.getCost() < currentSolution.getCost()) {
 				currentSolution = nextSolution;
 			} else {
+				double e = java.lang.Math.E;
+				double costDifference = Math.abs(nextSolution.getCost() - currentSolution.getCost());
+				double metrolopisCriterion = Math.pow(e, -(costDifference / temperature));
+				double probability = (double)ThreadLocalRandom.current().nextInt(0, 1000)/1000;
 				
-				// metrolpolis criterion and probabliliy goes here!
-				
-				if(false) {
+				//System.out.println(temperature);
+				if(probability < metrolopisCriterion) {
 					currentSolution = nextSolution;
 				}
 			}
