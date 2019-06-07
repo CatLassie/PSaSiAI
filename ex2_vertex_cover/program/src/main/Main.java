@@ -23,7 +23,7 @@ public class Main {
 		if(args.length > 4) {
 			equilibriumCoefficient = Integer.parseInt(args[4]);
 		}
-		int stoppingCondition = args.length > 5 ? Integer.parseInt(args[5]) : 5;
+		double stoppingCondition = args.length > 5 ? Double.parseDouble(args[5]) : 0.25;
 				
 		// path for the bin
 		// String readPath = "../../heuropttechinstances/instance-"+instanceN+".txt";

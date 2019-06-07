@@ -16,10 +16,10 @@ public class SimulatedAnnealing {
 	private double temperature; // // f-max - f-min (which is the vertex number)
 	private double coolingRate; // temperature cooling rate (e.g. 0.95)
 	private int equilibriumCondition; // number of moves before temperature adjustment (multiple of vertex number, e.g. n(n-1))
-	private int stoppingCondition; // number of temperature levels without solution improvement (e.g. 5)
+	private double stoppingCondition; // minimum temperature (e.g. 0.25)
 	
 	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType,
-							   double coolingRate, int equilibriumCoefficient, int stoppingCondition) {
+							   double coolingRate, int equilibriumCoefficient, double stoppingCondition) {
 		this.currentSolution = solution;
 		this.temperature = solution.getVertexN();
 		this.coolingRate = coolingRate;
@@ -35,7 +35,7 @@ public class SimulatedAnnealing {
 	}
 	
 	public Solution search() {
-		while(temperature > 0.25) {
+		while(temperature > stoppingCondition) {
 			oneTemperatureLevelSearch();
 
 			System.out.println(temperature);
@@ -74,7 +74,7 @@ public class SimulatedAnnealing {
 		annealing += "initial temperature: " + temperature + "\n";
 		annealing += "cooling rate: " + coolingRate + "\n";
 		annealing += "equilibrium condition: " + equilibriumCondition + " iterations\n";
-		annealing += "stopping condition: " + stoppingCondition + " temperature levels without solution improvement";
+		annealing += "stopping condition: " + stoppingCondition + " minimum temperature";
 		return annealing;
 	}
 }
