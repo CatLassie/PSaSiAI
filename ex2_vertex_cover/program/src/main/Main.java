@@ -14,16 +14,13 @@ import util.NeighbourhoodStructureEnum;
 
 public class Main {
 
-	public static void main(String[] args) {	
+	public static void main(String[] args) {
 		String instanceN = args[0];
 		String constrType = args[1];
 		String neighbourhoodType = args[2] ;
 		double coolingRate = args.length > 3 ? Double.parseDouble(args[3]) : 0.95;
+		double stoppingCondition = args.length > 4 ? Double.parseDouble(args[4]) : 0.25;
 		int equilibriumCoefficient = 0;
-		if(args.length > 4) {
-			equilibriumCoefficient = Integer.parseInt(args[4]);
-		}
-		double stoppingCondition = args.length > 5 ? Double.parseDouble(args[5]) : 0.25;
 				
 		// path for the bin
 		// String readPath = "../../heuropttechinstances/instance-"+instanceN+".txt";
@@ -32,18 +29,16 @@ public class Main {
 		try {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
 			
-			if(args.length <= 4) {
-				equilibriumCoefficient = k.getNumVertices()-1;
-			}
-			
+			equilibriumCoefficient = args.length > 5 ? Integer.parseInt(args[5]) : k.getNumVertices()-1;
+
 			System.out.println("\nMain.main()");
 			System.out.println("command line args:");
 			System.out.println("instance number: "+instanceN+"");
 			System.out.println("contruction heuritic type: "+constrType+"");
 			System.out.println("neighbourhood type: "+neighbourhoodType+"");
 			System.out.println("cooling rate: "+coolingRate+"");
-			System.out.println("equilibrium coefficient: "+equilibriumCoefficient+"");
-			System.out.println("stopping condition: "+stoppingCondition+"\n");
+			System.out.println("stopping condition: "+stoppingCondition+"");
+			System.out.println("equilibrium coefficient: "+equilibriumCoefficient+"\n");
 						
 			
 			
