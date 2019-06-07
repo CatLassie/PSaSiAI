@@ -24,10 +24,12 @@ public class Main {
 		double stoppingCondition = args.length > 4 ? Double.parseDouble(args[4]) : 0.25;
 		int equilibriumCoefficient = 0;
 				
-		// path for the bin
-		// String readPath = "../../heuropttechinstances/instance-"+instanceN+".txt";
-		String readPath = "file:/../../heuropttechinstances/instance-"+instanceN+".txt";
-		String writePath = "file:/../../solutions/instance-"+instanceN+".txt";
+		String localDir = System.getProperty("user.dir").split("program")[0];
+		String readPath = localDir + "heuropttechinstances\\instance-"+instanceN+".txt";
+		String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
+		System.out.println(readPath);
+		
+		
 		
 		try {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
