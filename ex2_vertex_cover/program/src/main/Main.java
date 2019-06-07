@@ -1,6 +1,7 @@
 package main;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.management.ManagementFactory;
 
 import SimulatedAnnealing.SimulatedAnnealing;
@@ -11,6 +12,7 @@ import construction.Greedy;
 import models.Solution;
 import parser.KPMPInstance;
 import util.NeighbourhoodStructureEnum;
+import util.SolutionWriter;
 
 public class Main {
 
@@ -25,6 +27,7 @@ public class Main {
 		// path for the bin
 		// String readPath = "../../heuropttechinstances/instance-"+instanceN+".txt";
 		String readPath = "file:/../../heuropttechinstances/instance-"+instanceN+".txt";
+		String writePath = "file:/../../solutions/instance-"+instanceN+".txt";
 		
 		try {
 			KPMPInstance k = KPMPInstance.readInstance(readPath);
@@ -78,10 +81,15 @@ public class Main {
 			// System.out.println(bestSolution.graphData()+"");
 			System.out.println(bestSolution.result()+"");
 			// System.out.println(bestSolution);
+			
+			SolutionWriter.write(writePath, bestSolution);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch(IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 
 }
