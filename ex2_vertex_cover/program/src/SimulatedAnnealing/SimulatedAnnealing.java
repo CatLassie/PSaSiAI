@@ -18,8 +18,6 @@ public class SimulatedAnnealing {
 	private int equilibriumCondition; // number of moves before temperature adjustment (multiple of vertex number, e.g. n(n-1))
 	private int stoppingCondition; // number of temperature levels without solution improvement (e.g. 5)
 	
-	private int tempLevelsWithoutImprovement = 0;
-
 	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType,
 							   double coolingRate, int equilibriumCoefficient, int stoppingCondition) {
 		this.currentSolution = solution;
@@ -37,16 +35,10 @@ public class SimulatedAnnealing {
 	}
 	
 	public Solution search() {
-		while(tempLevelsWithoutImprovement < stoppingCondition) {
-			int oldCost = currentSolution.getCost();
+		while(temperature > 0.25) {
 			oneTemperatureLevelSearch();
-			int newCost = currentSolution.getCost();
-			
-			if(!(oldCost < newCost)) {
-				tempLevelsWithoutImprovement++;
-			}
-			
-			//System.out.println(temperature);
+
+			System.out.println(temperature);
 			temperature = temperature * coolingRate; // TODO: cool it down once or for every iteration in equilibrium cycle?	
 		}
 		
@@ -64,7 +56,7 @@ public class SimulatedAnnealing {
 				double metrolopisCriterion = Math.pow(e, -(costDifference / temperature));
 				double probability = (double)ThreadLocalRandom.current().nextInt(0, 1000)/1000;
 				
-				//System.out.println(temperature);
+				// System.out.println(metrolopisCriterion);
 				if(probability < metrolopisCriterion) {
 					currentSolution = nextSolution;
 				}
