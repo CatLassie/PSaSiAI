@@ -7,7 +7,7 @@ import neighbourhood.INeighbourhood;
 import neighbourhood.NeighbourhoodRelaxed;
 import neighbourhood.NeighbourhoodStrict;
 import util.NeighbourhoodStructureEnum;
-// import util.Utilities;
+import util.Utilities;
 
 public class SimulatedAnnealing {
 
@@ -35,13 +35,13 @@ public class SimulatedAnnealing {
 	}
 	
 	public Solution search() {
-		while(temperature > stoppingCondition) {
+		Utilities.startTimer();
+		while((temperature > stoppingCondition) && !Utilities.isTimeOver()) {
 			oneTemperatureLevelSearch();
 
 			// System.out.println(temperature);
 			temperature = temperature * coolingRate; // TODO: cool it down once or for every iteration in equilibrium cycle?	
 		}
-		
 		return currentSolution;
 	}
 	
