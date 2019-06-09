@@ -28,7 +28,7 @@ public class SolutionWriter {
 		List<Boolean> vertexCover =  solution.getVertexCover();
 		for (int i = 0; i < vertexCover.size(); i++) {
 			if(vertexCover.get(i) == true) {
-				w.write(i + "\n");
+				w.write(i+1 + "\n"); // VERTICES START FROM 1 (LIKE IN INPUT FORMAT)
 			}
 		}
 	}

@@ -40,8 +40,8 @@ public class InputParser {
 		
 		while(s.hasNext()) {
 			s.skip("(#.*[\r\n]+)*");
-			int a = s.nextInt();
-			int b = s.nextInt();
+			int a = s.nextInt() - 1; // VERTICES START FROM 0!!!
+			int b = s.nextInt() - 1;
 			inst.adjacencyList.get(a).add(b);
 			inst.adjacencyList.get(b).add(a);
 			inst.adjacencyMatrix[a][b] = true;

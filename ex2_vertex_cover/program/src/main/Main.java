@@ -25,9 +25,12 @@ public class Main {
 		int equilibriumCoefficient = 0;
 				
 		String localDir = System.getProperty("user.dir").split("program")[0];
-		String readPath = localDir + "heuropttechinstances\\instance-"+instanceN+".txt";
-		String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
+		// String readPath = localDir + "heuropttechinstances\\instance-"+instanceN+".txt";
+		// String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
 		// System.out.println(readPath);
+		
+		 String readPath = localDir + "instances\\vc-exact_"+instanceN+".gr";
+		 String writePath = localDir + "solutions\\vc-exact_"+instanceN+".gr";
 		
 		
 		
