@@ -27,7 +27,7 @@ public class Main {
 		String localDir = System.getProperty("user.dir").split("program")[0];
 		String readPath = localDir + "heuropttechinstances\\instance-"+instanceN+".txt";
 		String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
-		System.out.println(readPath);
+		// System.out.println(readPath);
 		
 		
 		

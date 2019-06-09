@@ -18,16 +18,25 @@ public class NeighbourhoodRelaxed implements INeighbourhood {
 		// System.out.println(solution.getAdjacencyList().get(randomVertex));
 		// System.out.println(solution.isMoveValid(randomVertex));
 		
+		boolean isLoopVertex = false;
+		
 		if(!nextSolution.isMoveValid(randomVertex)) {
 			List<Integer> adjacentToRandomVertex = nextSolution.getAdjacencyList().get(randomVertex);
 			for(int i = 0; i < adjacentToRandomVertex.size(); i++) {
 				if(!nextSolution.getVertexCover().get(adjacentToRandomVertex.get(i))) {
 					nextSolution.pickVertex(adjacentToRandomVertex.get(i));
 				}
+				
+				// to prevent loop vertex from being unselected
+				if(randomVertex == adjacentToRandomVertex.get(i)) {
+					isLoopVertex = true;
+				}
 			}
 		}
-
-		nextSolution.pickVertex(randomVertex);
+		
+		if(!isLoopVertex) {
+			nextSolution.pickVertex(randomVertex);
+		}
 		return nextSolution;
 	}
 	

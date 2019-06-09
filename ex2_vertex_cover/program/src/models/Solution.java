@@ -42,6 +42,12 @@ public class Solution {
 				isValid = false;
 				break; // TODO: check if break does what you think it does
 			}
+			
+			// if there is a loop // input vertex equals current (v) from adjacency list
+			if(v == vertex) {
+				isValid = false;
+				break; // TODO: check if break does what you think it does
+			}
 		}
 
 		return isValid;
