@@ -22,15 +22,11 @@ public class InputParser {
 		InputParser inst = new InputParser();
 		Scanner s = new Scanner(new File(path));
 		
-		s.skip("(#.*[\r\n]+)*");
+		s.skip("p td ");
 		inst.numVertices = s.nextInt();
-		s.skip("(#.*[\r\n]+)*");
-		inst.K = s.nextInt();
-		
+		s.nextLine();
 		
 		for(int i=0; i<inst.numVertices; ++i) {
-			s.skip("(#.*[\r\n]+)*");
-			s.nextInt();
 			inst.adjacencyList.add(new ArrayList<Integer>());
 		}
 		
@@ -39,11 +35,13 @@ public class InputParser {
 			Arrays.fill(inst.adjacencyMatrix[i], false);
 		}
 		
+		// System.out.println(inst.numVertices);
+		
+		
 		while(s.hasNext()) {
 			s.skip("(#.*[\r\n]+)*");
 			int a = s.nextInt();
 			int b = s.nextInt();
-			s.skip("\\s*\\[[0-9]+\\]");
 			inst.adjacencyList.get(a).add(b);
 			inst.adjacencyList.get(b).add(a);
 			inst.adjacencyMatrix[a][b] = true;
@@ -56,6 +54,8 @@ public class InputParser {
 			List<Integer> al = inst.adjacencyList.get(i);
 			inst.adjacencyList.set(i, al.stream().distinct().collect(Collectors.toList()));
 		}
+		
+		// System.out.println(inst.adjacencyList);
 		
 		return inst;
 	}
