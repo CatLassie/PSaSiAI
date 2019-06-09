@@ -29,8 +29,8 @@ public class Main {
 		// String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
 		// System.out.println(readPath);
 		
-		 String readPath = localDir + "instances\\vc-exact_"+instanceN+".gr";
-		 String writePath = localDir + "solutions\\vc-exact_"+instanceN+".gr";
+		 String readPath = localDir + "\\instances\\vc-exact_"+instanceN+".gr";
+		 String writePath = localDir + "\\solutions\\vc-exact_"+instanceN+".gr";
 		
 		
 		
@@ -85,7 +85,6 @@ public class Main {
 			System.out.println("SOLUTION:");
 			// System.out.println(bestSolution.graphData()+"");
 			System.out.println(bestSolution.result()+"");
-			System.out.println(bestSolution.getAdjacencyList());
 			
 			SolutionWriter.write(writePath, bestSolution);
 		} catch (FileNotFoundException e) {

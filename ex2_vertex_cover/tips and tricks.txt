@@ -1,0 +1,12 @@
+example how to run the jar:
+
+java -cp vertexcover.jar main.Main 005 random strict 0.95 0.25
+
+"005" is the instance number (in the file name)
+"random" is the construction heuristic type (options: random / greedy / worst)
+"strict" is the neighbourhood type (options: strict / relaxed)
+"0.95" is the cooling rate (value between 0 and 1)
+"0.25" is the minimum temperature (stopping condition)
+
+instances have to be placed in an "instances" folder which needs to be on the same level as the jar
+a "solutions" folder has to be created, which needs to be on the same level as the jar

@@ -38,7 +38,6 @@ public class SimulatedAnnealing {
 		Utilities.startTimer();
 		while((temperature > stoppingCondition) && !Utilities.isTimeOver()) {
 			oneTemperatureLevelSearch();
-
 			// System.out.println(temperature);
 			temperature = temperature * coolingRate; // TODO: cool it down once or for every iteration in equilibrium cycle?	
 		}

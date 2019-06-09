@@ -161,15 +161,17 @@ public class Solution {
 	}
 	
 	public String result() {
-		String result = "vertex cover: [";
+		String result = "cost: " + cost + "\n";
+		result += "solution is " + (isValid() ? "VALID" : "INVALID") + "\n";
+		/*
+		result += "vertex cover: [";
 		for (int i = 0; i < vertexCover.size(); i++) {
 			if(vertexCover.get(i) == true) {
 				result += i == vertexCover.size() - 1 ? i :  i + ", ";
 			}
 		}
 		result += "]\n";
-		result += "cost: " + cost + "\n";
-		result += "solution is " + (isValid() ? "VALID" : "INVALID") + "\n";
+		*/
 		
 		return result;
 	}
