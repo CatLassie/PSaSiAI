@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.List;
 
 import models.Solution;
 
@@ -18,7 +19,18 @@ public class SolutionWriter {
 	
 	private static void write(Writer w, Solution solution) throws IOException {
 		w.write("SOLUTION:\n");
-		w.write(solution.result());
+		// w.write(solution.result());
+		
+		w.write("solution is " + (solution.isValid() ? "VALID" : "INVALID") + "\n");
+		w.write("cost: " + solution.getCost() + "\n");
+		w.write("vertex cover:\n");
+		
+		List<Boolean> vertexCover =  solution.getVertexCover();
+		for (int i = 0; i < vertexCover.size(); i++) {
+			if(vertexCover.get(i) == true) {
+				w.write(i + "\n");
+			}
+		}
 	}
 
 }
