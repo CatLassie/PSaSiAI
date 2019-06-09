@@ -5,13 +5,14 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import models.Solution;
 import parser.KPMPInstance;
+import util.InputParser;
 
 public class Randomized implements IConstruction {
 	
-	public Solution generateSolution(KPMPInstance kpmpInstance) {
-		int vertexNumber = kpmpInstance.getNumVertices();
+	public Solution generateSolution(InputParser p) {
+		int vertexNumber = p.getNumVertices();
 		//boolean[][] matrix = kpmpInstance.getAdjacencyMatrix();
-		List<List<Integer>> adjacencyList = kpmpInstance.getAdjacencyList();
+		List<List<Integer>> adjacencyList = p.getAdjacencyList();
 		
 		Solution solution = new Solution(vertexNumber, adjacencyList);
 		

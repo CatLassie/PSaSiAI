@@ -4,13 +4,13 @@ import java.util.List;
 
 import models.Solution;
 import parser.KPMPInstance;
+import util.InputParser;
 
 public class Worst implements IConstruction {
 	
-	public Solution generateSolution(KPMPInstance kpmpInstance) {
-		int vertexNumber = kpmpInstance.getNumVertices();
-		//boolean[][] matrix = kpmpInstance.getAdjacencyMatrix();
-		List<List<Integer>> adjacencyList = kpmpInstance.getAdjacencyList();
+	public Solution generateSolution(InputParser p) {
+		int vertexNumber = p.getNumVertices();
+		List<List<Integer>> adjacencyList = p.getAdjacencyList();
 		
 		Solution solution = new Solution(vertexNumber, adjacencyList);
 				

@@ -10,7 +10,7 @@ import construction.Worst;
 import construction.Randomized;
 import construction.Greedy;
 import models.Solution;
-import parser.KPMPInstance;
+import util.InputParser;
 import util.NeighbourhoodStructureEnum;
 import util.SolutionWriter;
 
@@ -32,9 +32,9 @@ public class Main {
 		
 		
 		try {
-			KPMPInstance k = KPMPInstance.readInstance(readPath);
+			InputParser p = InputParser.readInstance(readPath);
 			
-			equilibriumCoefficient = args.length > 5 ? Integer.parseInt(args[5]) : k.getNumVertices()-1;
+			equilibriumCoefficient = args.length > 5 ? Integer.parseInt(args[5]) : p.getNumVertices()-1;
 
 			System.out.println("\nMain.main()");
 			System.out.println("command line args:");
@@ -53,7 +53,7 @@ public class Main {
 			System.out.println("CONSTRUCTION HEURISTIC:");
 			System.out.println("type: "+construction+"");
 			double constructionStartCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
-			Solution initialSolution = construction.generateSolution(k);
+			Solution initialSolution = construction.generateSolution(p);
 			double constructionEndCPU = ManagementFactory.getThreadMXBean().getThreadCpuTime(Thread.currentThread().getId());
 			double constructionDiffCPU = (constructionEndCPU - constructionStartCPU)/1000000000;
 			System.out.println("CPU time: "+constructionDiffCPU+"\n");
@@ -82,7 +82,7 @@ public class Main {
 			System.out.println("SOLUTION:");
 			// System.out.println(bestSolution.graphData()+"");
 			System.out.println(bestSolution.result()+"");
-			// System.out.println(bestSolution);
+			System.out.println(bestSolution.getAdjacencyList());
 			
 			SolutionWriter.write(writePath, bestSolution);
 		} catch (FileNotFoundException e) {

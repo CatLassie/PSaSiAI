@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class InputParser {
+	private int K;
 	private int numVertices;
 	private List<List<Integer>> adjacencyList = new ArrayList<>();
 	private boolean[][] adjacencyMatrix;
@@ -23,7 +24,10 @@ public class InputParser {
 		
 		s.skip("(#.*[\r\n]+)*");
 		inst.numVertices = s.nextInt();
-				
+		s.skip("(#.*[\r\n]+)*");
+		inst.K = s.nextInt();
+		
+		
 		for(int i=0; i<inst.numVertices; ++i) {
 			s.skip("(#.*[\r\n]+)*");
 			s.nextInt();
@@ -54,6 +58,10 @@ public class InputParser {
 		}
 		
 		return inst;
+	}
+
+	public int getK() {
+		return K;
 	}
 
 	public int getNumVertices() {
