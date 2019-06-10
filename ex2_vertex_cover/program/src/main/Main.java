@@ -83,7 +83,7 @@ public class Main {
 			// System.out.println(bestSolution.graphData()+"");
 			System.out.println(bestSolution.result()+"");
 			
-			SolutionWriter.write(writePath, bestSolution);
+			SolutionWriter.write(writePath, bestSolution, annealingDiffCPU);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

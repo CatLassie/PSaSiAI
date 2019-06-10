@@ -10,18 +10,19 @@ import models.Solution;
 
 public class SolutionWriter {
 	
-	public static void write(String path, Solution solution) throws IOException {
+	public static void write(String path, Solution solution, double cpuTime) throws IOException {
 		try(Writer w = new BufferedWriter(new FileWriter(path))) {
-			write(w, solution);
+			write(w, solution, cpuTime);
 		}
 	}
 	
-	private static void write(Writer w, Solution solution) throws IOException {
+	private static void write(Writer w, Solution solution, double cpuTime) throws IOException {
 		w.write("SOLUTION:\n");
 		// w.write(solution.result());
 		
 		w.write("solution is " + (solution.isValid() ? "VALID" : "INVALID") + "\n");
 		w.write("cost: " + solution.getCost() + "\n");
+		w.write("CPU time: " + cpuTime + " seconds\n");
 		w.write("vertex cover:\n");
 		
 		List<Boolean> vertexCover =  solution.getVertexCover();
