@@ -90,10 +90,10 @@ public class Main {
 				if(i == 0 || bestSolution.getCost() < bestOfTen) {
 					bestOfTen = bestSolution.getCost();
 					bestOfTenTime = annealingDiffCPU;
+					SolutionWriter.write(writePath, bestSolution, annealingDiffCPU);
 				}
 								
 				System.out.println((i+1) + ") cost: " +bestSolution.getCost()+" time: "+annealingDiffCPU+"");
-				SolutionWriter.write(writePath, bestSolution, annealingDiffCPU);
 				
 				results.add(bestSolution.getCost());
 				resultsTime.add(annealingDiffCPU);
