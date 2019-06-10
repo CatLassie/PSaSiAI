@@ -2,7 +2,7 @@ example how to run the jar:
 
 java -jar vertexcover.jar 005 random relaxed 0.95 0.01 14
 
-"005" is the instance number (in the instance file number)
+"005" is the instance number (in the file name)
 "random" is the construction heuristic type (options: random / greedy / worst)
 "relaxed" is the neighbourhood type (options: strict / relaxed)
 "0.95" (OPTIONAL) is the cooling rate (value between 0 and 1, default is 0.95)
