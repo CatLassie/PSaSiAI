@@ -14,9 +14,6 @@ public class NeighbourhoodRelaxed implements INeighbourhood {
 		
 		Solution nextSolution = currentSolution.copy();
 		int randomVertex = ThreadLocalRandom.current().nextInt(0, nextSolution.getVertexN());
-		// System.out.println(randomVertex);
-		// System.out.println(solution.getAdjacencyList().get(randomVertex));
-		// System.out.println(solution.isMoveValid(randomVertex));
 		
 		boolean isLoopVertex = false;
 		

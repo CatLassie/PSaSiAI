@@ -34,10 +34,7 @@ public class InputParser {
 		for(int i=0; i<inst.numVertices; ++i) {
 			Arrays.fill(inst.adjacencyMatrix[i], false);
 		}
-		
-		// System.out.println(inst.numVertices);
-		
-		
+				
 		while(s.hasNext()) {
 			s.skip("(#.*[\r\n]+)*");
 			int a = s.nextInt() - 1; // VERTICES START FROM 0!!!
@@ -54,9 +51,7 @@ public class InputParser {
 			List<Integer> al = inst.adjacencyList.get(i);
 			inst.adjacencyList.set(i, al.stream().distinct().collect(Collectors.toList()));
 		}
-		
-		// System.out.println(inst.adjacencyList);
-		
+				
 		return inst;
 	}
 

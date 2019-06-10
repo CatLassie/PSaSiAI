@@ -21,16 +21,12 @@ public class Main {
 		String constrType = args[1];
 		String neighbourhoodType = args[2] ;
 		double coolingRate = args.length > 3 ? Double.parseDouble(args[3]) : 0.95;
-		double stoppingCondition = args.length > 4 ? Double.parseDouble(args[4]) : 0.25;
+		double stoppingCondition = args.length > 4 ? Double.parseDouble(args[4]) : 0.01;
 		int equilibriumCoefficient = 0;
 				
 		String localDir = System.getProperty("user.dir").split("program")[0];
-		// String readPath = localDir + "heuropttechinstances\\instance-"+instanceN+".txt";
-		// String writePath = localDir + "solutions\\instance-"+instanceN+".txt";
-		// System.out.println(readPath);
-		
-		 String readPath = localDir + "\\instances\\vc-exact_"+instanceN+".gr";
-		 String writePath = localDir + "\\solutions\\vc-exact_"+instanceN+".gr";
+		String readPath = localDir + "\\instances\\vc-exact_"+instanceN+".gr";
+		String writePath = localDir + "\\solutions\\vc-exact_"+instanceN+".gr";
 		
 		
 		

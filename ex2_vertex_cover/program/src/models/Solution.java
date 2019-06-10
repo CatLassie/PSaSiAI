@@ -6,8 +6,6 @@ import java.util.List;
 public class Solution {
 	private List<Boolean> vertexCover;
 	private int vertexN;
-	// private int edgeN = 0;
-	// private int[][] adjacencyMatrix;
 	private List<List<Integer>> adjacencyList;
 	private int cost;
 	
@@ -40,13 +38,13 @@ public class Solution {
 			int v = selectedVertexList.get(i);
 			if(vertexCover.get(v) == false) {
 				isValid = false;
-				break; // TODO: check if break does what you think it does
+				break;
 			}
 			
 			// if there is a loop // input vertex equals current (v) from adjacency list
 			if(v == vertex) {
 				isValid = false;
-				break; // TODO: check if break does what you think it does
+				break;
 			}
 		}
 
@@ -90,15 +88,7 @@ public class Solution {
 	public void setVertexN(int vertexN) {
 		this.vertexN = vertexN;
 	}
-	/*
-	public int getEdgeN() {
-		return edgeN;
-	}
-	
-	public void setEdgeN(int edgeN) {
-		this.edgeN = edgeN;
-	}
-	*/
+
 	public List<List<Integer>> getAdjacencyList() {
 		return adjacencyList;
 	}
@@ -126,7 +116,6 @@ public class Solution {
 	
 	public String toString() {
 		String solution = "vertex number: " + vertexN + "\n";
-		// solution += "edge number is: " + edgeN + "\n\n";
 		
 		solution += "adjacency list:\n";
 		for (int i = 0; i < adjacencyList.size(); i++) {
@@ -149,7 +138,6 @@ public class Solution {
 
 	public String graphData() {
 		String graph = "vertex number: " + vertexN + "\n";
-		// solution += "edge number is: " + edgeN + "\n\n";
 		
 		graph += "adjacency list:\n";
 		for (int i = 0; i < adjacencyList.size(); i++) {

@@ -7,7 +7,7 @@ public class Utilities {
 		timer = System.currentTimeMillis();
 	}
 	
-	// timeout set to 5 minutes
+	// timeout set to 1 minute
 	public static boolean isTimeOver () {
 		long currentTime = System.currentTimeMillis();
 		double diffSec = ((double) currentTime - timer)/1000;

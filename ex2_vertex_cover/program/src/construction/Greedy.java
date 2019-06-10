@@ -3,14 +3,12 @@ package construction;
 import java.util.List;
 
 import models.Solution;
-import parser.KPMPInstance;
 import util.InputParser;
 
 public class Greedy implements IConstruction {
 
 	public Solution generateSolution(InputParser p) {
 		int vertexNumber = p.getNumVertices();
-		// boolean[][] matrix = kpmpInstance.getAdjacencyMatrix();
 		List<List<Integer>> adjacencyList = p.getAdjacencyList();
 
 		Solution solution = new Solution(vertexNumber, adjacencyList);
@@ -36,7 +34,6 @@ public class Greedy implements IConstruction {
 					if(coveredEdgeN > maxCoveredEdgeN) {
 						promisingVertex = i;
 						maxCoveredEdgeN = coveredEdgeN;
-						// System.out.println(coveredEdgeN);
 					}
 				}
 			}

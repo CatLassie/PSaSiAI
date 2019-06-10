@@ -1,7 +1,6 @@
 package construction;
 
 import models.Solution;
-import parser.KPMPInstance;
 import util.InputParser;
 
 public interface IConstruction {

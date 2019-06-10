@@ -3,7 +3,6 @@ package construction;
 import java.util.List;
 
 import models.Solution;
-import parser.KPMPInstance;
 import util.InputParser;
 
 public class Worst implements IConstruction {

@@ -16,7 +16,7 @@ public class SimulatedAnnealing {
 	private double temperature; // // f-max - f-min (which is the vertex number)
 	private double coolingRate; // temperature cooling rate (e.g. 0.95)
 	private int equilibriumCondition; // number of moves before temperature adjustment (multiple of vertex number, e.g. n*(sqrt(n)))
-	private double stoppingCondition; // minimum temperature (e.g. 0.25)
+	private double stoppingCondition; // minimum temperature (e.g. 0.01)
 	
 	public SimulatedAnnealing (Solution solution, NeighbourhoodStructureEnum neighbourhoodType,
 							   double coolingRate, int equilibriumCoefficient, double stoppingCondition) {
