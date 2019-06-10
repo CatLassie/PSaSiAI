@@ -37,8 +37,9 @@ public class Main {
 		try {
 			InputParser p = InputParser.readInstance(readPath);
 			
-			equilibriumCoefficient = args.length > 5 ? Integer.parseInt(args[5]) : p.getNumVertices()-1;
-
+			int defaultCoefficient = (int) Math.sqrt(p.getNumVertices());
+			equilibriumCoefficient = args.length > 5 ? Integer.parseInt(args[5]) : defaultCoefficient;
+			
 			System.out.println("\nMain.main()");
 			System.out.println("command line args:");
 			System.out.println("instance number: "+instanceN+"");
