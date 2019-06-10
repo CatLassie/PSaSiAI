@@ -54,8 +54,11 @@ public class SimulatedAnnealing {
 				double costDifference = Math.abs(nextSolution.getCost() - currentSolution.getCost());
 				double metrolopisCriterion = Math.pow(e, -(costDifference / temperature));
 				double probability = (double)ThreadLocalRandom.current().nextInt(0, 1000)/1000;
-				
-				// System.out.println(metrolopisCriterion);
+				/*
+				if(i == 0) {
+					System.out.println(metrolopisCriterion);
+				}
+				*/
 				if(probability < metrolopisCriterion) {
 					currentSolution = nextSolution;
 				}
