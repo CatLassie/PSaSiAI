@@ -1,0 +1,36 @@
+
+Main.main()
+command line args:
+instance number: 005
+contruction heuritic type: random
+neighbourhood type: relaxed
+cooling rate: 0.95
+stopping condition: 0.01
+equilibrium coefficient: 14
+
+CONSTRUCTION HEURISTIC:
+type: RANDOMIZED
+CPU time: 0.0
+
+INITIAL CONSTRUCTED SOULTION:
+cost: 198
+solution is VALID
+
+SIMULATED ANNEALING:
+
+INSTANCE: 005
+
+1) cost: 129 time: 0.140625
+2) cost: 131 time: 0.09375
+3) cost: 130 time: 0.078125
+4) cost: 130 time: 0.0625
+5) cost: 130 time: 0.09375
+6) cost: 133 time: 0.078125
+7) cost: 129 time: 0.078125
+8) cost: 129 time: 0.109375
+9) cost: 130 time: 0.0625
+10) cost: 129 time: 0.0625
+
+BEST cost: 129 time: 0.140625
+MEAN cost: 130.0 time: 0.0859375
+STD. DEV. cost: 1.1832159566199232 time: 0.0234375
